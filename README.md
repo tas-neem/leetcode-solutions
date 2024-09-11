@@ -1,2 +1,2 @@
-# leetcode-solutions
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub v3](https://github.com/raphaelheinz/LeetHub-3.0)
+# Leetcode-Solutions
+This repository is a collection of my solutions to various Data Structures and Algorithm(DSA) problems on Leetcode
