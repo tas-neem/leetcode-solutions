@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
         stack<int> s;
-        bool fl=false;
         for(int i=0;i<asteroids.size();i++){
+            bool fl=false;
             while(!s.empty() && asteroids[i]<0 && s.top()>0){
                 if(s.top()==abs(asteroids[i])){
                     s.pop();
