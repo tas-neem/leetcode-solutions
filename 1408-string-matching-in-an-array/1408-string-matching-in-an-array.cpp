@@ -1,23 +1,15 @@
 class Solution {
 public:
-    bool substring(string s1,string s2){
-        if(s1.length()>s2.length()) return false;
-        int i=0,j=0;
-        for(int i=0;i<=s2.length()-s1.length();i++){
-            int j=0;
-            while(j<s1.length() && s1[j]==s2[i+j])
-                j++;
-            if(j==s1.length())
-                return true;
-        }
-        return false;
+    static bool cmp(const string &a, const string &b){
+        return a.size() < b.size();
     }
     vector<string> stringMatching(vector<string>& words) {
         vector<string> res;
-        for(int i=0;i<words.size();i++){
-            for(int j=0;j<words.size();j++){
-                if(i==j) continue;
-                if(substring(words[i],words[j])){
+        int n=words.size();
+        sort(words.begin(),words.end(),cmp);
+        for(int i=0;i<n;i++){
+            for(int j=n-1;j>i;j--){
+                if(words[j].find(words[i])!=string::npos){
                     res.push_back(words[i]);
                     break;
                 }
