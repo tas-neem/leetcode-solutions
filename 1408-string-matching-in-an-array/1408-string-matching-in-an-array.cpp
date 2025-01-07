@@ -1,31 +1,28 @@
 class Solution {
 public:
+    bool substring(string s1,string s2){
+        if(s1.length()>s2.length()) return false;
+        int i=0,j=0;
+        for(int i=0;i<=s2.length()-s1.length();i++){
+            int j=0;
+            while(j<s1.length() && s1[j]==s2[i+j])
+                j++;
+            if(j==s1.length())
+                return true;
+        }
+        return false;
+    }
     vector<string> stringMatching(vector<string>& words) {
-        uint8_t N = words.size();
-        std::vector<std::string> res;
-
-        // sort by size because a substring need to be
-        // of same size or smaller than the containing string
-        std::sort(words.begin(), words.end(), [](const auto& s, const auto& s2) {
-            return s.size() < s2.size();
-        });
-
-        // N - 1 because the last cannot be a substring of anything
-        for (uint8_t i = 0; i < N - 1; i++) {
-            uint8_t j = i + 1;
-
-            // all strings are unique so no need to check same lengths
-            while (j < N && words[j].size() == words[i].size()) j++;
-
-            while (j < N) {
-                if (words[j].contains(words[i])) {
+        vector<string> res;
+        for(int i=0;i<words.size();i++){
+            for(int j=0;j<words.size();j++){
+                if(i==j) continue;
+                if(substring(words[i],words[j])){
                     res.push_back(words[i]);
                     break;
                 }
-                j++;
             }
         }
-
         return res;
     }
 };
