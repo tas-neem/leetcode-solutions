@@ -3,13 +3,13 @@ public:
     bool canConstruct(string s, int k) {
         if(s.length()<k)
             return false;
-        unordered_map<char,int> mp;
+        int mp[26]={0};
         int count=0;
         for(char c:s){
-            mp[c]++;
+            mp[c-'a']++;
         }
-        for(auto it:mp){
-            if(it.second%2!=0)
+        for(int i:mp){
+            if(i%2!=0)
                 count++;
         }
         if(count>k)
