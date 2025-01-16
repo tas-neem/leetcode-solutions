@@ -7,10 +7,9 @@ public:
             if(c==']'){
                 string subs="";
                 while(!st.empty() && st.top()!="["){
-                    subs+=st.top(); 
+                    subs=st.top()+subs; 
                     st.pop();
                 }
-                reverse(subs.begin(),subs.end());
                 st.pop();
                 int count=0,place=1;
                 while(!st.empty() && isdigit(st.top()[0])){
@@ -25,8 +24,9 @@ public:
                 }
                 st.push(temp);
             }
-            else
-                st.push(string(1,c));
+            else{
+                st.push(string(1,c));          
+            }
         }
         while(!st.empty()){
             res=st.top()+res;
